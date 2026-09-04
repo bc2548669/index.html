@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="sw">
+<!DOCTYPE html><html lang="sw">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BONGO FLAVA FOREVER</title>
-
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>BONGO FLAVA FOREVER</title><style>
 *{
   box-sizing:border-box;
   margin:0;
@@ -200,6 +195,47 @@ input{
   margin:8px 0 12px;
 }
 
+/* COVER UPLOAD */
+.cover-preview{
+  width:100%;
+  max-width:250px;
+  height:250px;
+  object-fit:cover;
+  display:block;
+  margin:15px auto;
+  border-radius:15px;
+  border:2px solid #d4af37;
+  background:#222;
+}
+
+.upload-label{
+  display:block;
+  width:100%;
+  text-align:center;
+  background:#d4af37;
+  color:#000;
+  padding:13px;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+.upload-label:active{
+  transform:scale(.97);
+}
+
+#coverUpload{
+  display:none;
+}
+
+.remove-cover{
+  background:#333;
+  color:white;
+  width:100%;
+  margin-top:10px;
+}
+
 /* BOTTOM NAV */
 .nav{
   position:fixed;
@@ -238,236 +274,167 @@ footer{
   padding:30px 10px;
   font-size:12px;
 }
-</style>
-</head>
-
-<body>
-
-<header>
+</style></head><body><header>
   <h1>BONGO FLAVA FOREVER</h1>
   <p>Real Love • Real Pain • Real Music</p>
-</header>
+</header><!-- HOME --><section id="home" class="page active">  <div class="hero"><img id="homeCover"
+     src="cover.jpg"
+     class="cover"
+     alt="Bongo Flava Forever Cover"
+     onerror="this.style.display='none';">
 
+<h2>BONGO FLAVA FOREVER</h2>
 
-<!-- HOME -->
-<section id="home" class="page active">
+<p>
+  Karibu kwenye Bongo Flava Forever.
+  Hapa ndipo muziki wa Bongo Flava unapokutana
+  na vipindi, wasanii na nyimbo kali.
+</p>
 
-  <div class="hero">
+  </div>  <h2 class="section-title">🎵 Music Player</h2>  <div class="player"><div class="now-playing">
+  <small>NOW PLAYING</small>
+  <h3 id="songTitle">Hakuna wimbo unaocheza</h3>
+</div>
 
-    <!-- BADILISHA cover.jpg kuwa jina la picha yako -->
-    <img src="cover.jpg"
-         class="cover"
-         alt="Bongo Flava Forever Cover"
-         onerror="this.style.display='none';">
+<audio id="audioPlayer" controls preload="metadata"></audio>
 
-    <h2>BONGO FLAVA FOREVER</h2>
+<div class="controls">
+  <button onclick="previousSong()">⏮</button>
+  <button onclick="playCurrent()">▶</button>
+  <button onclick="nextSong()">⏭</button>
+</div>
 
-    <p>
-      Karibu kwenye Bongo Flava Forever.
-      Hapa ndipo muziki wa Bongo Flava unapokutana
-      na vipindi, wasanii na nyimbo kali.
-    </p>
+  </div></section><!-- NYIMBO --><section id="songs" class="page">  <h2 class="section-title">🎶 NYIMBO</h2>  <div id="songList"><div class="song">
+  <span class="song-name">
+    LeClassic X Kensa Boy_Binadamu.mp3
+  </span>
 
-  </div>
+  <button onclick="playSong(0)">▶ Play</button>
+</div>
 
-  <h2 class="section-title">🎵 Music Player</h2>
+<div class="song">
+  <span class="song-name">
+    cool boys.mp3
+  </span>
 
-  <div class="player">
+  <button onclick="playSong(1)">▶ Play</button>
+</div>
 
-    <div class="now-playing">
-      <small>NOW PLAYING</small>
-      <h3 id="songTitle">Hakuna wimbo unaocheza</h3>
-    </div>
-
-    <audio id="audioPlayer" controls preload="metadata"></audio>
-
-    <div class="controls">
-      <button onclick="previousSong()">⏮</button>
-      <button onclick="playCurrent()">▶</button>
-      <button onclick="nextSong()">⏭</button>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- NYIMBO -->
-<section id="songs" class="page">
-
-  <h2 class="section-title">🎶 NYIMBO</h2>
-
-  <div id="songList">
-
-    <div class="song">
-      <span class="song-name">
-        LeClassic X Kensa Boy_Binadamu.mp3
-      </span>
-
-      <button onclick="playSong(0)">▶ Play</button>
-    </div>
-
-    <div class="song">
-      <span class="song-name">
-        cool boys.mp3
-      </span>
-
-      <button onclick="playSong(1)">▶ Play</button>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- SESSIONS -->
-<section id="sessions" class="page">
-
-  <h2 class="section-title">📻 SESSIONS</h2>
-
-  <div class="session">
+  </div></section><!-- SESSIONS --><section id="sessions" class="page">  <h2 class="section-title">📻 SESSIONS</h2>  <div class="session">
     <h3>🔥 Bongo Flava Session</h3>
     <p>
       Kipindi maalum cha kusikiliza nyimbo kali
       za Bongo Flava.
     </p>
-  </div>
-
-  <div class="session">
+  </div>  <div class="session">
     <h3>❤️ Love Session</h3>
     <p>
       Nyimbo za mapenzi, hisia na maisha.
     </p>
-  </div>
-
-  <div class="session">
+  </div>  <div class="session">
     <h3>🎤 Mtaani Session</h3>
     <p>
       Muziki wenye vibe za mtaani na maisha halisi.
     </p>
-  </div>
+  </div></section><!-- ADMIN --><section id="admin" class="page">  <h2 class="section-title">🔐 ADMIN</h2>  <!-- COVER UPLOAD -->  <div class="box"><h3>🖼️ Website Cover</h3>
 
-</section>
+<p>
+  Chagua picha ya cover itakayoonekana
+  juu ya Home ya Bongo Flava Forever.
+</p>
 
+<img id="coverPreview"
+     class="cover-preview"
+     src="cover.jpg"
+     alt="Cover Preview"
+     onerror="this.style.display='none';">
 
-<!-- ADMIN -->
-<section id="admin" class="page">
+<label for="coverUpload" class="upload-label">
+  📤 UPLOAD COVER
+</label>
 
-  <h2 class="section-title">🔐 ADMIN</h2>
+<input
+  type="file"
+  id="coverUpload"
+  accept="image/*"
+  onchange="uploadCover(event)"
+>
 
-  <div class="box">
+<button class="remove-cover" onclick="removeCover()">
+  🗑️ Ondoa Cover
+</button>
 
-    <h3>Admin Panel</h3>
+  </div>  <!-- ADMIN MUSIC -->  <div class="box"><h3>Admin Panel</h3>
 
-    <p>
-      Sehemu hii ni kwa ajili ya usimamizi wa
-      Bongo Flava Forever.
-    </p>
+<p>
+  Sehemu hii ni kwa ajili ya usimamizi wa
+  Bongo Flava Forever.
+</p>
 
-    <br>
+<br>
 
-    <label>Jina la wimbo</label>
-    <input type="text" placeholder="Andika jina la wimbo">
+<label>Jina la wimbo</label>
+<input type="text" placeholder="Andika jina la wimbo">
 
-    <label>Msanii</label>
-    <input type="text" placeholder="Andika jina la msanii">
+<label>Msanii</label>
+<input type="text" placeholder="Andika jina la msanii">
 
-    <button onclick="adminMessage()">
-      ➕ Ongeza Wimbo
-    </button>
+<button onclick="adminMessage()">
+  ➕ Ongeza Wimbo
+</button>
 
-  </div>
+  </div>  <div class="box"><h3>Website Status</h3>
 
-  <div class="box">
+<p>
+  Website: ONLINE ✅
+</p>
 
-    <h3>Website Status</h3>
+<p>
+  Music Player: READY 🎵
+</p>
 
-    <p>
-      Website: ONLINE ✅
-    </p>
+<p>
+  Cover System: READY 🖼️
+</p>
 
-    <p>
-      Music Player: READY 🎵
-    </p>
+  </div></section><!-- SETTINGS --><section id="settings" class="page">  <h2 class="section-title">⚙️ SETTINGS</h2>  <div class="box"><h3>Music Player</h3>
 
-  </div>
+<p>
+  Tumia controls za player kucheza,
+  kusitisha na kubadilisha nyimbo.
+</p>
 
-</section>
+<br>
 
+<button onclick="stopMusic()">
+  ⏹ Stop Music
+</button>
 
-<!-- SETTINGS -->
-<section id="settings" class="page">
+  </div>  <div class="box"><h3>About</h3>
 
-  <h2 class="section-title">⚙️ SETTINGS</h2>
+<p>
+  BONGO FLAVA FOREVER — platform ya muziki
+  kwa mashabiki wa Bongo Flava.
+</p>
 
-  <div class="box">
-
-    <h3>Music Player</h3>
-
-    <p>
-      Tumia controls za player kucheza,
-      kusitisha na kubadilisha nyimbo.
-    </p>
-
-    <br>
-
-    <button onclick="stopMusic()">
-      ⏹ Stop Music
-    </button>
-
-  </div>
-
-  <div class="box">
-
-    <h3>About</h3>
-
-    <p>
-      BONGO FLAVA FOREVER — platform ya muziki
-      kwa mashabiki wa Bongo Flava.
-    </p>
-
-  </div>
-
-</section>
-
-
-<footer>
+  </div></section><footer>
   © 2026 BONGO FLAVA FOREVER
-</footer>
-
-
-<!-- BOTTOM NAV -->
-<nav class="nav">
-
-  <button class="active-nav" onclick="showPage('home',this)">
+</footer><!-- BOTTOM NAV --><nav class="nav">  <button class="active-nav" onclick="showPage('home',this)">
     <span class="nav-icon">🏠</span>
     Home
-  </button>
-
-  <button onclick="showPage('songs',this)">
+  </button>  <button onclick="showPage('songs',this)">
     <span class="nav-icon">🎵</span>
     Nyimbo
-  </button>
-
-  <button onclick="showPage('sessions',this)">
+  </button>  <button onclick="showPage('sessions',this)">
     <span class="nav-icon">📻</span>
     Sessions
-  </button>
-
-  <button onclick="showPage('admin',this)">
+  </button>  <button onclick="showPage('admin',this)">
     <span class="nav-icon">🔐</span>
     Admin
-  </button>
-
-  <button onclick="showPage('settings',this)">
+  </button>  <button onclick="showPage('settings',this)">
     <span class="nav-icon">⚙️</span>
     Settings
-  </button>
-
-</nav>
-
-
-<script>
+  </button></nav><script>
 
 const songs = [
 
@@ -488,6 +455,8 @@ let currentSong = 0;
 const audio = document.getElementById("audioPlayer");
 const title = document.getElementById("songTitle");
 
+
+/* MUSIC PLAYER */
 
 function playSong(index){
 
@@ -569,6 +538,8 @@ function stopMusic(){
 }
 
 
+/* PAGE NAVIGATION */
+
 function showPage(pageId,button){
 
   document.querySelectorAll(".page").forEach(function(page){
@@ -597,6 +568,93 @@ function showPage(pageId,button){
 }
 
 
+/* COVER UPLOAD */
+
+function uploadCover(event){
+
+  const file = event.target.files[0];
+
+  if(!file){
+    return;
+  }
+
+  if(!file.type.startsWith("image/")){
+
+    alert("Tafadhali chagua picha tu.");
+
+    return;
+
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function(e){
+
+    const imageData = e.target.result;
+
+    document.getElementById("homeCover").src = imageData;
+    document.getElementById("homeCover").style.display = "block";
+
+    document.getElementById("coverPreview").src = imageData;
+    document.getElementById("coverPreview").style.display = "block";
+
+    try{
+
+      localStorage.setItem("bffCover",imageData);
+
+    }catch(error){
+
+      alert("Picha ni kubwa sana. Jaribu picha yenye size ndogo.");
+
+    }
+
+    alert("Cover imewekwa vizuri! 🖼️");
+
+  };
+
+  reader.readAsDataURL(file);
+
+}
+
+
+/* LOAD SAVED COVER */
+
+window.addEventListener("DOMContentLoaded",function(){
+
+  const savedCover = localStorage.getItem("bffCover");
+
+  if(savedCover){
+
+    document.getElementById("homeCover").src = savedCover;
+    document.getElementById("homeCover").style.display = "block";
+
+    document.getElementById("coverPreview").src = savedCover;
+    document.getElementById("coverPreview").style.display = "block";
+
+  }
+
+});
+
+
+/* REMOVE COVER */
+
+function removeCover(){
+
+  localStorage.removeItem("bffCover");
+
+  document.getElementById("homeCover").src = "cover.jpg";
+  document.getElementById("homeCover").style.display = "block";
+
+  document.getElementById("coverPreview").src = "cover.jpg";
+  document.getElementById("coverPreview").style.display = "block";
+
+  alert("Cover mpya imeondolewa.");
+
+}
+
+
+/* ADMIN */
+
 function adminMessage(){
 
   alert(
@@ -607,7 +665,5 @@ function adminMessage(){
 
 }
 
-</script>
-
-</body>
-                        </html>
+</script></body>
+                                                                                                                                                                        </html>
