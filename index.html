@@ -86,6 +86,16 @@
       border-radius: 15px;
       padding: 20px;
       margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .cover {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 15px;
+      border: 2px solid #d4af37;
+      margin-bottom: 15px;
     }
 
     .song h3 {
@@ -98,6 +108,60 @@
       width: 100%;
     }
 
+    .admin {
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #111;
+      border: 1px solid #d4af37;
+      border-radius: 15px;
+    }
+
+    .admin h2 {
+      color: #d4af37;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .admin input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: #222;
+      color: white;
+    }
+
+    .admin button {
+      width: 100%;
+      padding: 13px;
+      background: #d4af37;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .admin button:hover {
+      background: #fff;
+    }
+
+    #adminPanel {
+      display: none;
+    }
+
+    #loginBox {
+      display: none;
+    }
+
+    .delete-btn {
+      margin-top: 12px;
+      background: #b00020 !important;
+      color: white !important;
+    }
+
     footer {
       text-align: center;
       padding: 30px 15px;
@@ -105,6 +169,12 @@
       background: #111;
       color: #aaa;
       border-top: 1px solid #333;
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 12px;
+      color: #d4af37;
     }
   </style>
 </head>
@@ -119,6 +189,7 @@
   <nav>
     <a href="#home">Home</a>
     <a href="#nyimbo">Nyimbo</a>
+    <a href="#admin">Admin</a>
   </nav>
 
   <section class="hero" id="home">
@@ -129,21 +200,97 @@
   <section class="songs" id="nyimbo">
 
     <div class="song">
+      <img
+        class="cover"
+        src="cover1.jpg"
+        alt="Kava la LeClassic X Kensa Boy"
+      >
+
       <h3>LeClassic X Kensa Boy_Binadamu</h3>
 
       <audio controls preload="metadata">
-        <source src="LeClassic%20X%20Kensa%20Boy_Binadamu.mp3" type="audio/mpeg">
+        <source
+          src="LeClassic%20X%20Kensa%20Boy_Binadamu.mp3"
+          type="audio/mpeg"
+        >
         Browser yako haiwezi kucheza audio.
       </audio>
     </div>
 
     <div class="song">
+      <img
+        class="cover"
+        src="cover2.jpg"
+        alt="Kava la Cool boys"
+      >
+
       <h3>Cool boys</h3>
 
       <audio controls preload="metadata">
-        <source src="Cool%20boys.mp3" type="audio/mpeg">
+        <source
+          src="Cool%20boys.mp3"
+          type="audio/mpeg"
+        >
         Browser yako haiwezi kucheza audio.
       </audio>
+    </div>
+
+  </section>
+
+  <section class="admin" id="admin">
+
+    <div id="loginBox">
+      <h2>🔐 ADMIN</h2>
+
+      <input
+        type="password"
+        id="adminPassword"
+        placeholder="Weka password ya Admin"
+      >
+
+      <button onclick="loginAdmin()">
+        INGIA ADMIN
+      </button>
+
+      <p class="message" id="loginMessage"></p>
+    </div>
+
+    <div id="adminPanel">
+
+      <h2>🎵 ADMIN PANEL</h2>
+
+      <input
+        type="text"
+        id="songName"
+        placeholder="Jina la wimbo"
+      >
+
+      <label style="display:block; margin-bottom:8px;">
+        🖼️ Weka picha ya kava:
+      </label>
+
+      <input
+        type="file"
+        id="coverFile"
+        accept="image/*"
+      >
+
+      <label style="display:block; margin:10px 0 8px;">
+        🎵 Weka wimbo:
+      </label>
+
+      <input
+        type="file"
+        id="songFile"
+        accept="audio/mpeg,audio/mp3,audio/*"
+      >
+
+      <button onclick="addSong()">
+        ➕ ONGEZA WIMBO
+      </button>
+
+      <p class="message" id="adminMessage"></p>
+
     </div>
 
   </section>
@@ -152,6 +299,150 @@
     <p>© 2026 BONGO FLAVA FOREVER</p>
     <p>Music • Love • Pain • Life</p>
   </footer>
+
+
+  <script>
+
+    /*
+      PASSWORD YA ADMIN
+
+      Kwa sasa password ni:
+      1234
+
+      Unaweza kuibadilisha hapa chini.
+    */
+
+    const ADMIN_PASSWORD = "1234";
+
+
+    function loginAdmin() {
+
+      const password =
+        document.getElementById("adminPassword").value;
+
+      const loginMessage =
+        document.getElementById("loginMessage");
+
+      if (password === ADMIN_PASSWORD) {
+
+        document.getElementById("loginBox").style.display = "none";
+
+        document.getElementById("adminPanel").style.display = "block";
+
+      } else {
+
+        loginMessage.textContent =
+          "❌ Password si sahihi.";
+
+      }
+    }
+
+
+    /*
+      Tunaonyesha login box tu mtu akibonyeza Admin.
+    */
+
+    document.querySelector('a[href="#admin"]')
+      .addEventListener("click", function() {
+
+        document.getElementById("loginBox").style.display = "block";
+
+        document.getElementById("adminPanel").style.display = "none";
+
+      });
+
+
+    function addSong() {
+
+      const name =
+        document.getElementById("songName").value.trim();
+
+      const cover =
+        document.getElementById("coverFile").files[0];
+
+      const song =
+        document.getElementById("songFile").files[0];
+
+      const message =
+        document.getElementById("adminMessage");
+
+
+      if (!name || !cover || !song) {
+
+        message.textContent =
+          "⚠️ Tafadhali jaza jina, picha ya kava na wimbo.";
+
+        return;
+      }
+
+
+      /*
+        Hii sehemu inaonyesha wimbo mara moja
+        kwenye browser.
+      */
+
+      const coverURL =
+        URL.createObjectURL(cover);
+
+      const songURL =
+        URL.createObjectURL(song);
+
+
+      const songBox =
+        document.createElement("div");
+
+      songBox.className = "song";
+
+
+      songBox.innerHTML = `
+
+        <img
+          class="cover"
+          src="${coverURL}"
+          alt="Kava la wimbo"
+        >
+
+        <h3>${name}</h3>
+
+        <audio controls preload="metadata">
+
+          <source
+            src="${songURL}"
+            type="${song.type || "audio/mpeg"}"
+          >
+
+          Browser yako haiwezi kucheza audio.
+
+        </audio>
+
+        <button
+          class="delete-btn"
+          onclick="this.parentElement.remove()"
+        >
+          🗑️ FUTA WIMBO
+        </button>
+
+      `;
+
+
+      document
+        .getElementById("nyimbo")
+        .appendChild(songBox);
+
+
+      message.textContent =
+        "✅ Wimbo umeongezwa.";
+
+
+      document.getElementById("songName").value = "";
+
+      document.getElementById("coverFile").value = "";
+
+      document.getElementById("songFile").value = "";
+
+    }
+
+  </script>
 
 </body>
 </html>
